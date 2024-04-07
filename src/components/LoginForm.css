@@ -56,3 +56,22 @@ form {
     width: 100%;
     color: #d3d3d3;
 }
+
+.form .btn {
+    display: flex;
+    flex-direction: row;
+    margin-top: 2.5em;
+}
+
+.login-button {
+    padding: 0.5em;
+    border-radius: 5px;
+    margin-right: 0.5em;
+    border: none;
+    outline: none;
+    transition: .4s ease-in-out;
+    background-color: #3498db;
+    color: white;
+    width: 48%;
+    cursor: pointer;
+}

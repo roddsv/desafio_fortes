@@ -7,8 +7,8 @@ const LoginForm: React.FC = () => {
 
     return (
         <main>
-            <form>
-                <p className="login-header">Faça seu login</p>
+            <form className="form centered">
+                <p className="login-header">Login</p>
                 <div className="field">
                     <input 
                     type="text"
@@ -25,6 +25,9 @@ const LoginForm: React.FC = () => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}/>
                 </div>
+            <div className="btn">
+                <button className="login-button">Login</button>
+            </div>
             </form>
         </main>
 
