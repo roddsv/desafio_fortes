@@ -9,14 +9,14 @@ const LoginForm: React.FC = () => {
         <main>
             <form>
                 <p className="login-header">Faça seu login</p>
-                <div>
+                <div className="field">
                     <input 
                     type="text" 
                     placeholder="Digite o nome de usuário" 
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}/>
                 </div>
-                <div>
+                <div className="field">
                     <input 
                     type="password" 
                     placeholder="Senha" 
