@@ -1,10 +1,10 @@
-import "./App.css";
-import LoginForm from './components/LoginForm';
 
+import "./App.css";
+import RoutesApp from './routes.jsx';
 function App() {
   return (
     <div className="App">
-      <LoginForm />
+      <RoutesApp />
     </div>
   );
 }
