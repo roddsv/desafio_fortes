@@ -1,5 +1,16 @@
+main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
 form {
     display: flex;
+    flex-direction: column;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 0.4em;
+    background-color: #171717;
 }
 
 .login-header {
