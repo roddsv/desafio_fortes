@@ -7,27 +7,29 @@ const LoginForm: React.FC = () => {
 
     return (
         <main>
+            <img className="logo" src="/assets/logo_fortes.svg" alt="Logo Fortes" />
             <form className="form centered">
                 <p className="login-header">Login</p>
-                <div className="field">
-                    <input 
-                    type="text"
-                    className="input-field"
-                    placeholder="Usuário" 
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}/>
+                    <div className="field">
+                        <input
+                            type="text"
+                            className="input-field"
+                            placeholder="Usuário"
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)} />
+                    </div>
+                    <div className="field">
+                        <input
+                            type="password"
+                            className="input-field"
+                            placeholder="Senha"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)} />
+                    </div>
+                <div className="btn">
+                    <button className="login-button">Login</button>
+                    <button className="login-button">Cadastre-se</button>
                 </div>
-                <div className="field">
-                    <input 
-                    type="password"
-                    className="input-field"
-                    placeholder="Senha" 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
-                </div>
-            <div className="btn">
-                <button className="login-button">Login</button>
-            </div>
             </form>
         </main>
 
