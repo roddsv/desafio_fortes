@@ -1,19 +1,18 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import User from '../../interfaces/User';
 import { api } from "../../services/api";
 
 const UsersList: React.FC = () => {
-    
+
     const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
+        
         const fetchUsers = async () => {
             try {
-                const users = axios.get(`http://localhost:3001/users`)
-                .then((response) => setUsers(response.data));
-            
-                console.log(users);
+                api.get(`http://localhost:3001/users`)
+                    .then((response) => setUsers(response.data));
+
             } catch (error) {
                 console.error('Usuário não encontrado');
             }
@@ -22,16 +21,30 @@ const UsersList: React.FC = () => {
         fetchUsers();
     }, []);
 
-    return(
+
+    return (
         <div>
-        <h1>Lista de Usuários</h1>
-            <ul>
-                {users.map((user) => (
-                    <li key={user.id}>
-                        Login: {user.username}
-                    </li>
-                ))}
-            </ul>
+            <h1>Lista de Usuários</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Senha</th>
+                        <th>Data de Cadastro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {users.map(user => (
+                        <tr key={user.id}>
+                            <td>{user.id}</td>
+                            <td>{user.username}</td>
+                            <td>{user.password}</td>
+                            <td>{user.dataCadastro}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }

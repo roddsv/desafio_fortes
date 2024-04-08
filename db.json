@@ -1,5 +1,52 @@
 {
-    "users": [
-        {"id": "uuid", "username": "fortes", "password": "123", "dataCadastro": "2024-04-06T12:00:00.000Z"}
-    ]
+  "users": [
+    {
+      "id": "1",
+      "username": "fortes",
+      "password": "123",
+      "dataCadastro": "07/04/2024"
+    },
+    {
+      "id": "2cc8",
+      "username": "teste",
+      "password": "teste",
+      "dataCadastro": "1712609156297"
+    },
+    {
+      "id": "fcd8",
+      "username": "teste1",
+      "password": "teste1",
+      "dataCadastro": "1712609194743"
+    },
+    {
+      "id": "6165",
+      "username": "teste5",
+      "password": "teste5",
+      "dataCadastro": "1712609268399"
+    },
+    {
+      "id": "66e7",
+      "username": "teste",
+      "password": "teste",
+      "dataCadastro": "08/04/2024"
+    },
+    {
+      "id": "2460",
+      "username": "rodrigo",
+      "password": "rodrigo",
+      "dataCadastro": "08/04/2024"
+    },
+    {
+      "id": "1d57",
+      "username": "rodrigo",
+      "password": "rodrigo",
+      "dataCadastro": "08/04/2024"
+    },
+    {
+      "id": "3ed4",
+      "username": "teste10",
+      "password": "teste10",
+      "dataCadastro": "08/04/2024"
+    }
+  ]
 }

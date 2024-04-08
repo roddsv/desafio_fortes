@@ -1,31 +1,22 @@
-import {useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from "react";
-import axios from "axios";
+
+import { api } from "../../services/api";
+
 import "./UserSignUp.css";
 
 const UserSignUp = () => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const [error, setError] = useState<string | null>(null);
-    const navigate = useNavigate();
+    const [dataCadastro, setDataCadastro] = useState<Date>();
+    
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
-        try {
-            const response = await axios.post('http:localhost:3001/users', {
-                login,
-                password,
-                dataCadastro: new Date().toISOString()
-            });
-
-            if (response.data) {
-                navigate('/users');
-            }
-        } catch (error) {
-            setError('Erro no cadastro do usuário');
-        }
-    };
+        await api.post('/users', {username: login, password: password, dataCadastro: new Date(Date.now()).toLocaleDateString()})
+            .then((response) => console.log(response));
+        };       
     
     return (
         <main>
@@ -48,6 +39,10 @@ const UserSignUp = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
+                    <input
+                        type="hidden"
+                        onChange={(e) => setDataCadastro(dataCadastro)} />
+                
                 <div className="btn">                    
                     <button type="submit" className="login-button">
                         <Link to="/users">

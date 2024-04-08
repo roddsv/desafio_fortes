@@ -1,7 +1,9 @@
 interface User {
     id: number;
+    password: string;
     username: string;
-    dataCadastro: Date;
+    dataCadastro: string;
+    
 }
 
 export default User;
