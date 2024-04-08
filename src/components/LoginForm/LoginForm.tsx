@@ -1,11 +1,40 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+
+import axios from "axios";
+
 import "./LoginForm.css";
-import { Link } from "react-router-dom";
 
 const LoginForm: React.FC = () => {
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
+    const [username, setUsername] = useState<string>('fortes');
+    const [password, setPassword] = useState<string>('senha');
+    const [error, setError] = useState<string | null>(null);
+    const navigate = useNavigate();
 
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+    
+        try {
+          const response = await axios.post<{ success: boolean; token?: string }>(
+            'http://localhost:3001/users',
+            {
+              username,
+              password,
+            }
+          );
+    
+          if (response.data.success && response.data.token) {
+            localStorage.setItem('token', response.data.token);
+            navigate('/users');
+          } else {
+            setError('Login falhou');
+          }
+        } catch (error) {
+          setError('Erro ao fazer login');
+        }
+    };
+    
+    
     return (
         <main>
             <img className="logo" src="/assets/logo_fortes.svg" alt="Logo Fortes" />
@@ -28,7 +57,7 @@ const LoginForm: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="btn">
-                    <button className="login-button">Login</button>
+                    <button type="submit" className="login-button">Login</button>
                     <button className="login-button">
                         <Link to="/sign_up">
                             Cadastre-se

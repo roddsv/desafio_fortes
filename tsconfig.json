@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "paths": {
+      "react": ["node_modules/@types/react"]
+    },
     "lib": [
       "dom",
       "dom.iterable",
@@ -22,5 +25,8 @@
   },
   "include": [
     "src"
-  ]
+  ],
+  "overrides": {
+    "@types/react": "^18.0.0"
+  }
 }
