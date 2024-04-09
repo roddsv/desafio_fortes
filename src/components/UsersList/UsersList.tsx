@@ -3,6 +3,8 @@ import User from '../../interfaces/User';
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
 
+import './UsersList.css';
+
 const UsersList: React.FC = () => {
 
     const [users, setUsers] = useState<User[]>([]);
@@ -26,7 +28,7 @@ const UsersList: React.FC = () => {
     return (
         <div>
             <h1 className="titulo-lista">Lista de Usuários</h1>
-            <table className="tabela-users">
+            <table>
                 <thead>
                     <tr>
                         <th>ID</th>

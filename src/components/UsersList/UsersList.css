@@ -27,9 +27,23 @@ th {
     padding: 5px;
 }
 
+tr:nth-child(even) {
+    background-color: #ddd;
+}
+
 .buttons {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     margin-top: 60px;
+}
+
+.buttons button {
+    width: 15%;
+    font-size: 18px;
+}
+
+.buttons a {
+    text-decoration: none;
+    color: white
 }
