@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import User from '../../interfaces/User';
-import { api } from "../../services/api";
+import api from "../../services/api";
 import { Link } from "react-router-dom";
 
 import './UsersList.css';

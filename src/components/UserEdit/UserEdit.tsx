@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { api } from '../../services/api';
+import api from '../../services/api'
 import { useNavigate, useParams } from 'react-router-dom';
+
+import './UserEdit.css';
 
 import User from '../../interfaces/User';
 
@@ -45,11 +47,11 @@ const UserEdit: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Editar Usuário</h1>
+    <div className="container">
+      <h1 className="title">Editar Usuário</h1>
       {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Username:</label>
           <input
             type="text"
@@ -58,7 +60,7 @@ const UserEdit: React.FC = () => {
             required
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password:</label>
           <input
             type="password"
@@ -69,8 +71,13 @@ const UserEdit: React.FC = () => {
         </div>
         <input
           type="hidden"
-          onChange={(e) => setDataCadastro(dataCadastro)} />
-        <button type="submit">Confirmar Alterações</button>
+          value={dataCadastro}
+          onChange={(e) => setDataCadastro(dataCadastro)}
+        />
+        <div className="buttons">
+          <button type="submit">Confirmar Alterações</button>
+          <button onClick={() => navigate('/users')}>Cancelar</button>
+        </div>
       </form>
     </div>
   );

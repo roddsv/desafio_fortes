@@ -1,44 +1,43 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 
-import axios from "axios";
+import api from "../../services/api";
+import User from '../../interfaces/User';
 
 import "./LoginForm.css";
 
 const LoginForm: React.FC = () => {
-    const [username, setUsername] = useState<string>('');
-    const [password, setPassword] = useState<string>('');
-    const [error, setError] = useState<string | null>(null);
-    const navigate = useNavigate();
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    try {
+        const response = await api.get('http://localhost:3001/users');
+        const data = response.data;
     
-        try {
-          const response = await axios.post<{ success: boolean; token?: string }>(
-            'http://localhost:3001/users',
-            {
-              username,
-              password,
-            }
-          );
-    
-          if (response.data.success && response.data.token) {
-            localStorage.setItem('token', response.data.token);
-            navigate('/users');
-          } else {
-            setError('Login falhou');
-          }
-        } catch (error) {
-          setError('Erro ao fazer login');
+        const user = data.find((user: User) => user.username === username && user.password === password);
+        console.log(user)
+
+        if (user) {
+          console.log('Login bem sucedido')
+          navigate('/users')
+        } else {
+            setError('Usuário ou senha incorretos');
         }
-    };
+    } catch (err) {
+        setError('Erro ao tentar fazer login');
+    }
+};
     
     
     return (
         <main>
             <img className="logo" src="/assets/logo_fortes.svg" alt="Logo Fortes" />
-            <form className="form centered">
+            <form onSubmit={handleSubmit} className="form centered">
                 <p className="login-header">Login</p>
                 <div className="field">
                     <input
