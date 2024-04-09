@@ -23,7 +23,8 @@ const LoginForm: React.FC = () => {
         console.log(user)
 
         if (user) {
-            console.log('Login bem-sucedido');
+          console.log('Login bem sucedido')
+          navigate('/users')
         } else {
             setError('Usuário ou senha incorretos');
         }
