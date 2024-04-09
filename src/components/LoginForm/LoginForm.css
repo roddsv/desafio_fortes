@@ -88,3 +88,8 @@ form {
     cursor: pointer;
     font-size: 16px;
 }
+
+.login-button a {
+    text-decoration: none;
+    color: white;
+}

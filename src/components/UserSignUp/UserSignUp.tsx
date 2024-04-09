@@ -44,7 +44,12 @@ const UserSignUp = () => {
                         onChange={(e) => setDataCadastro(dataCadastro)} />
                 
                 <div className="btn">                    
-                    <button type="submit" className="login-button">
+                    <button className="login-button cadastro">
+                        <Link to="/">
+                            Home
+                            </Link>
+                    </button>
+                    <button type="submit" className="login-button cadastro">
                         <Link to="/users">
                             Cadastrar
                             </Link>

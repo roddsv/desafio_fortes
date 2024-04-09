@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import User from '../../interfaces/User';
 import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
 const UsersList: React.FC = () => {
 
@@ -24,8 +25,8 @@ const UsersList: React.FC = () => {
 
     return (
         <div>
-            <h1>Lista de Usuários</h1>
-            <table>
+            <h1 className="titulo-lista">Lista de Usuários</h1>
+            <table className="tabela-users">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -45,6 +46,14 @@ const UsersList: React.FC = () => {
                     ))}
                 </tbody>
             </table>
+            <div className="buttons">
+                <button type="submit" className="login-button">
+                    <Link to="/">Home</Link>
+                </button>
+                <button className="login-button">
+                    <Link to="/sign_up">Cadastro</Link>
+                </button>
+            </div>
         </div>
     )
 }

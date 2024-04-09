@@ -6,8 +6,8 @@ import axios from "axios";
 import "./LoginForm.css";
 
 const LoginForm: React.FC = () => {
-    const [username, setUsername] = useState<string>('fortes');
-    const [password, setPassword] = useState<string>('senha');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
     const [error, setError] = useState<string | null>(null);
     const navigate = useNavigate();
 
@@ -57,7 +57,7 @@ const LoginForm: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <div className="btn">
-                    <button type="submit" className="login-button">Login</button>
+                    <button type="submit" className="login-button cadastro">Login</button>
                     <button className="login-button">
                         <Link to="/sign_up">
                             Cadastre-se
