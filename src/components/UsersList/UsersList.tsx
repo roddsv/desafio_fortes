@@ -8,6 +8,7 @@ import './UsersList.css';
 const UsersList: React.FC = () => {
 
     const [users, setUsers] = useState<User[]>([]);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         
@@ -22,7 +23,19 @@ const UsersList: React.FC = () => {
         };
 
         fetchUsers();
+
     }, []);
+
+    const deleteUser = async (id: string) => {
+        try {
+            const response = await api.delete(`http://localhost:3001/users/${id}`);
+            console.log(response.data);
+            const updatedUsers = users.filter(user => user.id.toString() !== id);
+            setUsers(updatedUsers);
+        } catch (e) {
+            setError('Usuário não excluído');
+        }
+    };
 
 
     return (
@@ -35,6 +48,7 @@ const UsersList: React.FC = () => {
                         <th>Nome</th>
                         <th>Senha</th>
                         <th>Data de Cadastro</th>
+                        <th>Opções</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,6 +58,11 @@ const UsersList: React.FC = () => {
                             <td>{user.username}</td>
                             <td>{user.password}</td>
                             <td>{user.dataCadastro}</td>
+                            <td>
+                                <button>Editar</button>
+                                <span> | </span>  
+                                <button onClick={() => {deleteUser(user.id.toString())}}>Excluir</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
