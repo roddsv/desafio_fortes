@@ -59,7 +59,8 @@ const UsersList: React.FC = () => {
                             <td>{user.password}</td>
                             <td>{user.dataCadastro}</td>
                             <td>
-                                <button>Editar</button>
+                                <button><Link to={`/users/edit/${user.id}`}>Editar</Link>
+                                </button>
                                 <span> | </span>  
                                 <button onClick={() => {deleteUser(user.id.toString())}}>Excluir</button>
                             </td>
